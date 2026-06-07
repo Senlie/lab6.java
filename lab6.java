@@ -23,9 +23,8 @@
 import java.util.Arrays;
 import java.util.Comparator;
 
-// =============================================================
 // Абстрактний базовий клас: квітка
-// =============================================================
+
 abstract class Flower {
 
     /** Назва квітки */
@@ -64,8 +63,7 @@ abstract class Flower {
 
     /**
      * Абстрактний метод — кожна квітка описує свій аромат
-     *
-     * @return рядок з описом аромату
+
      */
     public abstract String getAroma();
 
@@ -78,20 +76,15 @@ abstract class Flower {
     }
 }
 
-// =============================================================
+//
 // Клас-нащадок: Троянда
-// =============================================================
+//
 class Rose extends Flower {
 
     /** Колір троянди */
     private String color;
 
-    /**
-     * @param price         ціна
-     * @param stemLength    довжина стебла
-     * @param freshnessLevel рівень свіжості
-     * @param color         колір
-     */
+
     public Rose(double price, double stemLength,
                 int freshnessLevel, String color) {
         super("Троянда", price, stemLength, freshnessLevel);
@@ -110,21 +103,12 @@ class Rose extends Flower {
         return super.toString() + ", колір=" + color;
     }
 }
-
-// =============================================================
 // Клас-нащадок: Тюльпан
-// =============================================================
 class Tulip extends Flower {
 
-    /** Форма пелюстків */
+
     private String petalShape;
 
-    /**
-     * @param price         ціна
-     * @param stemLength    довжина стебла
-     * @param freshnessLevel рівень свіжості
-     * @param petalShape    форма пелюстків
-     */
     public Tulip(double price, double stemLength,
                  int freshnessLevel, String petalShape) {
         super("Тюльпан", price, stemLength, freshnessLevel);
@@ -142,20 +126,11 @@ class Tulip extends Flower {
     }
 }
 
-// =============================================================
-// Клас-нащадок: Лілія
-// =============================================================
 class Lily extends Flower {
 
     /** Кількість бутонів */
     private int budCount;
 
-    /**
-     * @param price         ціна
-     * @param stemLength    довжина стебла
-     * @param freshnessLevel рівень свіжості
-     * @param budCount      кількість бутонів
-     */
     public Lily(double price, double stemLength,
                 int freshnessLevel, int budCount) {
         super("Лілія", price, stemLength, freshnessLevel);
@@ -172,22 +147,15 @@ class Lily extends Flower {
         return super.toString() + ", бутонів=" + budCount;
     }
 }
-
-// =============================================================
 // Клас: аксесуар для букета
-// =============================================================
+
 class Accessory {
 
-    /** Назва аксесуара */
+
     private String name;
 
-    /** Ціна аксесуара */
     private double price;
 
-    /**
-     * @param name  назва
-     * @param price ціна
-     */
     public Accessory(String name, double price) {
         this.name = name;
         this.price = price;
@@ -202,9 +170,8 @@ class Accessory {
     }
 }
 
-// =============================================================
 // Клас: букет — масив квіток + масив аксесуарів
-// =============================================================
+
 class Bouquet {
 
     /** Масив квіток букета */
@@ -213,19 +180,13 @@ class Bouquet {
     /** Масив аксесуарів */
     private Accessory[] accessories;
 
-    /**
-     * @param flowers     масив квіток
-     * @param accessories масив аксесуарів
-     */
     public Bouquet(Flower[] flowers, Accessory[] accessories) {
         this.flowers = flowers;
         this.accessories = accessories;
     }
 
     /**
-     * Підраховує загальну вартість букета (квіти + аксесуари).
-     *
-     * @return загальна вартість
+     * Підраховує загальну вартість букета (квіти + аксесуари)
      */
     public double getTotalPrice() {
         double total = 0;
@@ -248,22 +209,13 @@ class Bouquet {
         );
     }
 
-    /**
-     * Знаходить квітки з довжиною стебла в заданому діапазоні.
-     *
-     * @param minLength мінімальна довжина (см)
-     * @param maxLength максимальна довжина (см)
-     * @return масив квіток що відповідають діапазону
-     */
     public Flower[] findByLengthRange(double minLength, double maxLength) {
-        // Підраховуємо кількість відповідних квіток
         int count = 0;
         for (Flower f : flowers) {
             if (f.getStemLength() >= minLength && f.getStemLength() <= maxLength) {
                 count++;
             }
         }
-        // Збираємо результат
         Flower[] result = new Flower[count];
         int idx = 0;
         for (Flower f : flowers) {
@@ -278,9 +230,7 @@ class Bouquet {
     public Accessory[] getAccessories(){ return accessories; }
 }
 
-// =============================================================
 // Головний клас із виконавчим методом
-// =============================================================
 public class Lab6 {
 
     public static void main(String[] args) {
@@ -348,11 +298,6 @@ public class Lab6 {
         }
     }
 
-    /**
-     * Виводить масив квіток на екран.
-     *
-     * @param flowers масив квіток
-     */
     static void printFlowers(Flower[] flowers) {
         for (int i = 0; i < flowers.length; i++) {
             System.out.println("  [" + i + "] " + flowers[i]);
